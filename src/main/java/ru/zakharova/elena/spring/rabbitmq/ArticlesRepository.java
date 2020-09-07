@@ -1,7 +1,6 @@
 package ru.zakharova.elena.spring.rabbitmq;
 
 import org.springframework.stereotype.Component;
-import ru.zakharova.elena.spring.rabbitmq.Article;
 import ru.zakharova.elena.spring.rabbitmq.enums.Keys;
 
 import javax.annotation.PostConstruct;
@@ -20,7 +19,8 @@ public class ArticlesRepository {
         articles.add(new Article(4, Keys.JAVASCRIPT.getValue() + Keys.PHP.getValue(), "javascript, php content"));
     }
 
+    // упрощенный поиск
     public Article findById(int i) {
-        return articles.get(i);
+        return articles.get(--i);
     }
 }
