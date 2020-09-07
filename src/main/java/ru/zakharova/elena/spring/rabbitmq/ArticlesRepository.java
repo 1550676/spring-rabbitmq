@@ -1,4 +1,4 @@
-package ru.zakharova.elena.spring.rabbitmq.repositories;
+package ru.zakharova.elena.spring.rabbitmq;
 
 import org.springframework.stereotype.Component;
 import ru.zakharova.elena.spring.rabbitmq.Article;

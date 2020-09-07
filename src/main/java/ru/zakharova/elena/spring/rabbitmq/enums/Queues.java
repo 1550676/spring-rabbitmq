@@ -1,14 +1,11 @@
 package ru.zakharova.elena.spring.rabbitmq.enums;
 
-public enum QueueNames {
-
-    QUEUE_FOR_JAVA_ARTICLES("javaArticlesQueue"),
-    QUEUE_FOR_PHP_ARTICLES("phpArticlesQueue"),
+public enum Queues {
     QUEUE_FOR_RECEIVING_RESULTS("receivingResultsQueue");
 
     final String value;
 
-    QueueNames(String value) {
+    Queues(String value) {
         this.value = value;
     }
 
