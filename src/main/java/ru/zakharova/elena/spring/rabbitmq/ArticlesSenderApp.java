@@ -63,15 +63,15 @@ public class ArticlesSenderApp {
         return "The article with content: " + article.getContent() + " was sent";
     }
 
-    @GetMapping("/addKey") // http://localhost:8189/spring-rabbit/addKey/?key=.java.
-    public String addKey(@RequestParam String key) {
-        rabbitTemplate.convertAndSend(ExchangersNames.EXCHANGER_FOR_SENDING_TO_SUBSCRIBERS.getValue(), "changeOfKey", "addKey " + key);
+    @GetMapping("/addKey") // http://localhost:8189/spring-rabbit/addKey/?key=.java.&queue=(имя очереди)
+    public String addKey(@RequestParam String key, @RequestParam String queue) {
+        rabbitTemplate.convertAndSend(ExchangersNames.EXCHANGER_FOR_SENDING_TO_SUBSCRIBERS.getValue(), queue, "addKey " + key);
         return "addKey: " + key;
     }
 
-    @GetMapping("/deleteKey") // http://localhost:8189/spring-rabbit/deleteKey/?key=.java.
-    public String deleteKey(@RequestParam String key) {
-        rabbitTemplate.convertAndSend(ExchangersNames.EXCHANGER_FOR_SENDING_TO_SUBSCRIBERS.getValue(), "changeOfKey", "deleteKey " + key);
+    @GetMapping("/deleteKey") // http://localhost:8189/spring-rabbit/deleteKey/?key=.java.&queue=(имя очереди)
+    public String deleteKey(@RequestParam String key, @RequestParam String queue) {
+        rabbitTemplate.convertAndSend(ExchangersNames.EXCHANGER_FOR_SENDING_TO_SUBSCRIBERS.getValue(), queue, "deleteKey " + key);
         return "deleteKey: " + key;
     }
 
