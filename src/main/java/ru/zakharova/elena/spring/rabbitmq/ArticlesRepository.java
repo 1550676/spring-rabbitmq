@@ -19,7 +19,6 @@ public class ArticlesRepository {
         articles.add(new Article(4, Keys.JAVASCRIPT.getValue() + Keys.PHP.getValue(), "javascript, php content"));
     }
 
-    // упрощенный поиск
     public Article findById(int i) {
         return articles.get(--i);
     }

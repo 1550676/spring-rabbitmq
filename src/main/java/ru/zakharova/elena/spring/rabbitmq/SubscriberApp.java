@@ -16,7 +16,7 @@ public class SubscriberApp {
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, Exchangers.EXCHANGER_FOR_SENDING_TO_SUBSCRIBERS.getValue(), queueName);
         System.out.println(" [*] Waiting for tasks with queueName: " + queueName);
-        // сразу подписываем на java
+        // Java subscriber is default
         queueBindingAdd(".java.", channel, queueName);
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {

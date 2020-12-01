@@ -61,13 +61,15 @@ public class ArticlesSenderApp {
         return "The article with content: " + article.getContent() + " was sent";
     }
 
-    @GetMapping("/addKey") // http://localhost:8189/spring-rabbit/addKey/?key=.java.&queue=(имя очереди)
+    // subscribe to
+    @GetMapping("/addKey") // http://localhost:8189/spring-rabbit/addKey/?key=.java.&queue=(name of queue)
     public String addKey(@RequestParam String key, @RequestParam String queue) {
         rabbitTemplate.convertAndSend(Exchangers.EXCHANGER_FOR_SENDING_TO_SUBSCRIBERS.getValue(), queue, "addKey " + key);
         return "addKey: " + key;
     }
 
-    @GetMapping("/deleteKey") // http://localhost:8189/spring-rabbit/deleteKey/?key=.java.&queue=(имя очереди)
+    // unsubscribe from
+    @GetMapping("/deleteKey") // http://localhost:8189/spring-rabbit/deleteKey/?key=.java.&queue=(name of queue)
     public String deleteKey(@RequestParam String key, @RequestParam String queue) {
         rabbitTemplate.convertAndSend(Exchangers.EXCHANGER_FOR_SENDING_TO_SUBSCRIBERS.getValue(), queue, "deleteKey " + key);
         return "deleteKey: " + key;
@@ -91,10 +93,5 @@ public class ArticlesSenderApp {
         SpringApplication.run(ArticlesSenderApp.class, args);
     }
 
-    // Домашнее задание:
-    // 1. Сделайте два консольных приложения (не Спринг):
-    //   а. IT-блог, который публикует статьи по языкам программирования
-    //   б. подписчик, которого интересуют статьи по определенным языкам
-    // 2. Сделайте возможность публиковать "статьи" по темам
-    // 3. Сделайте возможность клиентов подписываться и отписываться от статей по темам
+
 }
