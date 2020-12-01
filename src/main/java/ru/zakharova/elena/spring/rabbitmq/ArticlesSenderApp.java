@@ -25,7 +25,6 @@ import java.util.concurrent.TimeoutException;
 public class ArticlesSenderApp {
     private ArticlesRepository articlesRepository;
     private RabbitTemplate rabbitTemplate;
-
     @Autowired
     public void setRabbitTemplate(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
